@@ -1,0 +1,21 @@
+mkdir -p /opt/src
+
+cd /opt/src
+
+DIR=`pwd`
+
+yum install -y wget
+
+wget http://mirror.downloadvn.com/apache/zeppelin/zeppelin-0.7.2/zeppelin-0.7.2-bin-all.tgz
+
+tar -zxvf zeppelin-0.7.2-bin-all.tgz
+
+rm -rf zeppelin-0.7.2-bin-all.tgz
+
+touch /etc/profile.d/zeppelin.sh
+
+echo "export ZEPPELIN_HOME=$DIR/zeppelin-0.7.2-bin-all; PATH=\${PATH}:\$ZEPPELIN_HOME/bin" > /etc/profile.d/zeppelin.sh
+
+source /etc/profile.d/zeppelin.sh
+
+echo $ZEPPELIN_HOME

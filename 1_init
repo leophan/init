@@ -1,0 +1,17 @@
+echo "# UDA" >> ~/.bashrc
+
+echo "alias n='netstat -lntp'" >> ~/.bashrc
+
+echo "alias cb='cd /opt/src'" >> ~/.bashrc
+
+echo "alias ci='cd /opt/init'" >> ~/.bashrc
+
+source ~/.bashrc
+
+systemctl stop postfix
+
+systemctl disable postfix
+
+systemctl status postfix
+
+systemctl list-unit-files --type=service | grep postfix

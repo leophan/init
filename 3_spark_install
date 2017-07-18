@@ -1,0 +1,29 @@
+mkdir -p /opt/src
+
+cd /opt/src
+
+DIR=`pwd`
+
+PACKAGE=spark-2.1.0-bin-hadoop2.7.tgz
+#PACKAGE=spark-2.1.1-bin-hadoop2.7.tgz
+#PACKAGE=spark-2.2.0-bin-hadoop2.7.tgz
+
+yum install -y wget
+
+#wget https://d3kbcqa49mib13.cloudfront.net/spark-2.1.0-bin-hadoop2.7.tgz
+#wget https://d3kbcqa49mib13.cloudfront.net/spark-2.1.1-bin-hadoop2.7.tgz
+#wget https://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz
+
+wget https://d3kbcqa49mib13.cloudfront.net/$PACKAGE
+
+tar -zxvf $PACKAGE
+
+rm -rf $PACKAGE
+
+touch /etc/profile.d/spark.sh
+
+echo "export SPARK_HOME=$DIR/spark-2.1.0-bin-hadoop2.7; PATH=\${PATH}:\$SPARK_HOME/bin; PATH=\${PATH}:\$SPARK_HOME/sbin" > /etc/profile.d/spark.sh
+
+source /etc/profile.d/spark.sh
+
+echo $SPARK_HOME
