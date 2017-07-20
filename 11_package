@@ -1,3 +1,0 @@
-yum -y install wget
-
-yum -y install git

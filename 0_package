@@ -1,0 +1,9 @@
+yum -y install wget
+
+yum -y install git
+
+git config --global user.email "leo.phan0411@gmail.com"
+
+git config --global user.name "leophan"
+
+yum -y install unzip
