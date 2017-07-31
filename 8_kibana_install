@@ -1,0 +1,23 @@
+mkdir -p /opt/src
+
+cd /opt/src
+
+DIR=`pwd`
+
+yum install -y wget
+
+wget https://download.elastic.co/kibana/kibana/kibana-4.6.5-linux-x86_64.tar.gz
+
+tar -zxvf kibana-4.6.5-linux-x86_64.tar.gz
+
+rm -rf kibana-4.6.5-linux-x86_64.tar.gz
+
+touch /etc/profile.d/kibana.sh
+
+echo "export KIBANA_HOME=$DIR/kibana-4.6.5-linux-x86_64; PATH=\${PATH}:\$KIBANA_HOME/bin" > /etc/profile.d/kibana.sh
+
+source /etc/profile.d/kibana.sh
+
+chown -R centos:centos $DIR/kibana-4.6.5-linux-x86_64
+
+echo $KIBANA_HOME
