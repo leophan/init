@@ -1,0 +1,26 @@
+mkdir -p /opt/src
+
+cd /opt/src
+
+DIR=`pwd`
+
+yum install -y wget
+
+wget https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.6/elasticsearch-2.4.6.tar.gz
+
+tar -zxvf elasticsearch-2.4.6.tar.gz
+
+rm -rf elasticsearch-2.4.6.tar.gz
+
+touch /etc/profile.d/elastic.sh
+
+echo "export ELASTIC_HOME=$DIR/elasticsearch-2.4.6; PATH=\${PATH}:\$ELASTIC_HOME/bin" > /etc/profile.d/elastic.sh
+
+echo "# UCF"  >> $ELASTIC_HOME/config/elasticsearch.yml
+echo "network.bind_host: 0.0.0.0" >> $ELASTIC_HOME/config/elasticsearch.yml
+
+source /etc/profile.d/elastic.sh
+
+chown -R centos:centos $DIR/elasticsearch-2.4.6
+
+echo $ELASTIC_HOME
