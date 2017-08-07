@@ -19,8 +19,8 @@ endDateTmp=$2
 
 # Check day of year.
 curDate=$(date +'%j')
-startDate=$(date -d $startDateTmp +'%j')
-endDate=$(date -d $endDateTmp +'%j')
+startDate=$( expr $(date -d $startDateTmp +'%j') + 0 )
+endDate=$( expr $(date -d $endDateTmp +'%j') + 0 )
 
 # Check day of loop.
 subDateBegin=$(( $curDate-$startDate ))

@@ -19,8 +19,8 @@ endDateTmp=$2
 
 # Check day of year.
 curDate=$(date +'%j')
-startDate=$(date -d $startDateTmp +'%j')
-endDate=$(date -d $endDateTmp +'%j')
+startDate=$( expr $(date -d $startDateTmp +'%j') + 0 )
+endDate=$( expr $(date -d $endDateTmp +'%j') + 0 )
 
 # Check day of loop.
 subDateBegin=$(( $curDate-$startDate ))
@@ -32,7 +32,7 @@ for ((i = "$subDateBegin"; i >= "$subDateEnd"; i--))
 {
   next="$(date --date="$i days ago" +'%Y.%m.%d')"
   printf "Day : %s (%s)\n" "$next" "$i"
-  curl -XPUT localhost:9200/vmx-$next/_settings -d '{ "index" : { "number_of_replicas" : 0 }}'
+  curl -XDELETE localhost:9200/app-fa-$next
 }
 
 echo "End"

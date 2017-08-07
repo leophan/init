@@ -28,10 +28,16 @@ subDateEnd=$(( $curDate-$endDate ))
 
 echo "Time StartDate $startDate($subDateBegin) to EndDate $endDate($subDateEnd)"
 echo "Begin"
+
+# Directory stores data.
+cd /mnt/data/data_elastic/data_1x/fimplus-log-center2/nodes/0/indices
+
+# Loop process data.
 for ((i = "$subDateBegin"; i >= "$subDateEnd"; i--))
 {
   next="$(date --date="$i days ago" +'%Y.%m.%d')"
   printf "Day : %s (%s)\n" "$next" "$i"
+  /usr/bin/swift download logs_nginx log-nginx-$next.tgz
 }
 
 echo "End"
