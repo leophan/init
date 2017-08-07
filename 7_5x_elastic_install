@@ -1,0 +1,33 @@
+useradd centos -d /home/centos
+
+mkdir -p /opt/src
+
+cd /opt/src
+
+DIR=`pwd`
+
+ELASTIC_NAME=elasticsearch-5.4.1
+ELASTIC_HOME=$DIR/$ELASTIC_NAME
+
+yum install -y wget
+
+#wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.4.1.tar.gz
+
+wget https://artifacts.elastic.co/downloads/elasticsearch/$ELASTIC_NAME.tar.gz
+
+tar -zxvf $ELASTIC_NAME.tar.gz
+
+rm -rf $ELASTIC_NAME.tar.gz
+
+touch /etc/profile.d/elastic.sh
+
+echo "export ELASTIC_HOME=$ELASTIC_HOME; PATH=\${PATH}:\$ELASTIC_HOME/bin" > /etc/profile.d/elastic.sh
+
+echo "# UCF"  >> $ELASTIC_HOME/config/elasticsearch.yml
+echo "network.bind_host: 0.0.0.0" >> $ELASTIC_HOME/config/elasticsearch.yml
+
+source /etc/profile.d/elastic.sh
+
+chown -R centos:centos $DIR/$ELASTIC_NAME
+
+echo $ELASTIC_HOME
