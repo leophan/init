@@ -1,0 +1,24 @@
+mkdir -p /opt/src
+
+cd /opt/src
+
+DIR=`pwd`
+
+PACKAGE=kafka_2.11-0.11.0.0
+ZIP_PACKAGE=$PACKAGE.tgz
+
+yum install -y wget
+
+wget http://mirrors.viethosting.com/apache/kafka/0.11.0.0/$ZIP_PACKAGE
+
+tar -zxvf $ZIP_PACKAGE
+
+rm -rf $ZIP_PACKAGE
+
+touch /etc/profile.d/kafka.sh
+
+echo "export KAFKA_HOME=$DIR/$PACKAGE; PATH=\${PATH}:\$KAFKA_HOME/bin; PATH=\${PATH}:\$KAFKA_HOME/sbin" > /etc/profile.d/kafka.sh
+
+source /etc/profile.d/kafka.sh
+
+echo $KAFKA_HOME
