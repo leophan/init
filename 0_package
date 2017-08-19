@@ -13,3 +13,5 @@ yum -y install unzip
 yum -y install telnet
 
 yum -y install yum install epel-release
+
+yum -y install net-tools
