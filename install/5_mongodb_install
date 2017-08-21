@@ -22,7 +22,23 @@ rm -rf $MONGODB_NAME.tgz
 mkdir -p $MONGODB_HOME/data/db
 
 touch $MONGODB_HOME/ma.sh
+chmod u+x $MONGODB_HOME/ma.sh
+
+echo "#!/bin/bash
+
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
+echo never > /sys/kernel/mm/transparent_hugepage/defrag
+
+/opt/src/mongodb-linux-x86_64-rhel62-3.2.1/bin/mongod \
+--dbpath /opt/src/mongodb-linux-x86_64-rhel62-3.2.1/data/db \
+> /opt/src/mongodb-linux-x86_64-rhel62-3.2.1/mongodb.out &" > $MONGODB_HOME/ma.sh
+
 touch $MONGODB_HOME/mo.sh
+chmod u+x $MONGODB_HOME/mo.sh
+
+echo "#!/bin/bash
+ps ax | grep -i 'mongodb-linux' | grep -v grep | awk '{print $1}' | xargs kill -9" > $MONGODB_HOME/mo.sh
+
 touch /etc/profile.d/mongodb.sh
 
 echo "export MONGODB_HOME=$MONGODB_HOME; PATH=\${PATH}:\$MONGODB_HOME/bin" > /etc/profile.d/mongodb.sh
