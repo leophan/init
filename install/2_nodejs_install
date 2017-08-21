@@ -1,0 +1,23 @@
+yum install -y wget
+
+yum install -y unzip
+
+mkdir /opt/src
+
+cd /opt/src
+
+wget https://nodejs.org/dist/v6.11.2/node-v6.11.2-linux-x64.tar.xz
+
+tar -xJf node-v6.11.2-linux-x64.tar.xz
+
+rm -rf node-v6.11.2-linux-x64.tar.xz
+
+echo "export NODE_PATH=/opt/src/node-v6.11.2-linux-x64; PATH=i\${PATH}:\$NODE_PATH/bin" > /etc/profile.d/node.sh
+
+source /etc/profile.d/node.sh
+
+node -v
+
+npm -v
+
+echo $NODE_PATH
