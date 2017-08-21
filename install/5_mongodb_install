@@ -21,8 +21,8 @@ rm -rf $MONGODB_NAME.tgz
 
 mkdir -p $MONGODB_HOME/data/db
 
-touch $MONGODB_HOME/ma.sh
-chmod u+x $MONGODB_HOME/ma.sh
+touch $MONGODB_HOME/bin/ma
+chmod u+x $MONGODB_HOME/bin/ma
 
 echo "#!/bin/bash
 
@@ -31,13 +31,15 @@ echo never > /sys/kernel/mm/transparent_hugepage/defrag
 
 /opt/src/mongodb-linux-x86_64-rhel62-3.2.1/bin/mongod \
 --dbpath /opt/src/mongodb-linux-x86_64-rhel62-3.2.1/data/db \
-> /opt/src/mongodb-linux-x86_64-rhel62-3.2.1/mongodb.out &" > $MONGODB_HOME/ma.sh
+> /opt/src/mongodb-linux-x86_64-rhel62-3.2.1/mongodb.out &
+echo MongoDB Start." > $MONGODB_HOME/bin/ma
 
-touch $MONGODB_HOME/mo.sh
-chmod u+x $MONGODB_HOME/mo.sh
+touch $MONGODB_HOME/bin/mo
+chmod u+x $MONGODB_HOME/bin/mo
 
 echo "#!/bin/bash
-ps ax | grep -i 'mongodb-linux' | grep -v grep | awk '{print $1}' | xargs kill -9" > $MONGODB_HOME/mo.sh
+ps ax | grep -i 'mongodb-linux' | grep -v grep | awk '{print \$1}' | xargs kill -9
+echo MongoDB Stop." > $MONGODB_HOME/bin/mo
 
 touch /etc/profile.d/mongodb.sh
 
