@@ -7,8 +7,10 @@ centos          hard     memlock         unlimited
 II: 
 max file descriptors [4096] for elasticsearch process is too low, increase to at least [65536]
 
-elasticsearch  -  nofile  65536
- ulimit -n 65536
+elasticsearch   -	 nofile         65536
+centos  	-	 nofile		65536
+
+ulimit -n 65536
 
 III:
 max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
