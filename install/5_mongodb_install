@@ -19,6 +19,10 @@ tar -zxvf $MONGODB_NAME.tgz
 
 rm -rf $MONGODB_NAME.tgz
 
+mkdir -p $MONGODB_HOME/data/db
+
+touch $MONGODB_HOME/ma.sh
+touch $MONGODB_HOME/mo.sh
 touch /etc/profile.d/mongodb.sh
 
 echo "export MONGODB_HOME=$MONGODB_HOME; PATH=\${PATH}:\$MONGODB_HOME/bin" > /etc/profile.d/mongodb.sh
