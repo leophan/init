@@ -1,0 +1,52 @@
+useradd centos -d /home/centos
+
+mkdir -p /opt/src
+
+cd /opt/src
+
+DIR=`pwd`
+
+MONGODB_NAME=mongodb-linux-x86_64-rhel62-3.2.1
+MONGODB_HOME=$DIR/$MONGODB_NAME
+
+yum install -y wget
+
+#wget http://downloads.mongodb.org/linux/mongodb-linux-x86_64-rhel62-3.2.1.tgz?_ga=2.82986390.1801565798.1503311239-1060023628.1503311239
+#wget http://downloads.mongodb.org/linux/$MONGODB_NAME.tgz?_ga=2.82986390.1801565798.1503311239-1060023628.1503311239
+wget http://downloads.mongodb.org/linux/$MONGODB_NAME.tgz
+
+tar -zxvf $MONGODB_NAME.tgz 
+
+rm -rf $MONGODB_NAME.tgz
+
+mkdir -p $MONGODB_HOME/data/db
+
+touch $MONGODB_HOME/bin/ma
+chmod u+x $MONGODB_HOME/bin/ma
+
+echo "#!/bin/bash
+
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
+echo never > /sys/kernel/mm/transparent_hugepage/defrag
+
+/opt/src/mongodb-linux-x86_64-rhel62-3.2.1/bin/mongod \
+--dbpath /opt/src/mongodb-linux-x86_64-rhel62-3.2.1/data/db \
+> /opt/src/mongodb-linux-x86_64-rhel62-3.2.1/mongodb.out &
+echo MongoDB Start." > $MONGODB_HOME/bin/ma
+
+touch $MONGODB_HOME/bin/mo
+chmod u+x $MONGODB_HOME/bin/mo
+
+echo "#!/bin/bash
+ps ax | grep -i 'mongodb-linux' | grep -v grep | awk '{print \$1}' | xargs kill -9
+echo MongoDB Stop." > $MONGODB_HOME/bin/mo
+
+touch /etc/profile.d/mongodb.sh
+
+echo "export MONGODB_HOME=$MONGODB_HOME; PATH=\${PATH}:\$MONGODB_HOME/bin" > /etc/profile.d/mongodb.sh
+
+source /etc/profile.d/mongodb.sh
+
+#chown -R centos:centos $DIR/$MONGODB_NAME
+
+echo $MONGODB_HOME

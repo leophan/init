@@ -1,0 +1,37 @@
+useradd centos -d /home/centos
+
+mkdir -p /opt/src
+
+cd /opt/src
+
+DIR=`pwd`
+
+KIBANA_NAME=kibana-4.1.11-linux-x64
+KIBANA_HOME=$DIR/$KIBANA_NAME
+
+yum install -y wget
+
+#wget https://download.elastic.co/kibana/kibana/kibana-4.1.11-linux-x64.tar.gz
+wget https://download.elastic.co/kibana/kibana/$KIBANA_NAME.tar.gz
+
+tar -zxvf $KIBANA_NAME.tar.gz
+
+rm -rf $KIBANA_NAME.tar.gz
+
+touch $KIBANA_HOME/bin/kia
+chmod u+x $KIBANA_HOME/bin/kia
+echo "#!/bin/bash
+/opt/src/kibana-4.1.11-linux-x64/bin/kibana > /opt/src/kibana-4.1.11-linux-x64/kibana.out &" > $KIBANA_HOME/bin/kia
+
+touch $KIBANA_HOME/bin/kio
+chmod u+x $KIBANA_HOME/bin/kio
+echo "ps ax | grep -i 'kibana' | grep node | grep -v grep | awk '{print $1}' | xargs kill -9" > $KIBANA_HOME/bin/kio
+
+touch /etc/profile.d/kibana.sh
+
+echo "export KIBANA_HOME=$KIBANA_HOME; PATH=\${PATH}:\$KIBANA_HOME/bin" > /etc/profile.d/kibana.sh
+
+source /etc/profile.d/kibana.sh
+
+#chown -R centos:centos $DIR/$KIBANA_NAME 
+echo $KIBANA_HOME

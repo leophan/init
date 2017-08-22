@@ -1,0 +1,5 @@
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
+echo never > /sys/kernel/mm/transparent_hugepage/defrag
+
+** WARNING: You are running this process as the root user, which is not recommended.
+** WARNING: soft rlimits too low. rlimits set to 31137 processes, 65536 files. Number of processes should be at least 32768 : 0.5 times number of files.
