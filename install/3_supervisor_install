@@ -1,0 +1,9 @@
+mkdir -p /opt/src
+
+cd /opt/src
+
+DIR=`pwd`
+
+yum -y install epel-release
+
+yum -y install supervisor

@@ -1,0 +1,25 @@
+mkdir -p /opt/src
+
+cd /opt/src
+
+DIR=`pwd`
+
+PACKAGE=zookeeper-3.4.10
+ZIP_PACKAGE=$PACKAGE.tar.gz
+
+yum install -y wget
+
+#wget http://mirrors.viethosting.com/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz
+wget http://mirrors.viethosting.com/apache/zookeeper/$PACKAGE/$ZIP_PACKAGE
+
+tar -xzvf $ZIP_PACKAGE
+
+rm -rf $ZIP_PACKAGE
+
+touch /etc/profile.d/zookeeper.sh
+
+echo "export ZK_HOME=$DIR/$PACKAGE; PATH=\${PATH}:\$ZK_HOME/bin; PATH=\${PATH}:\$ZK_HOME/sbin" > /etc/profile.d/zookeeper.sh
+
+source /etc/profile.d/zookeeper.sh
+
+echo $ZK_HOME

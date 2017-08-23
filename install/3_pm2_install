@@ -1,0 +1,5 @@
+yum install -y wget
+
+yum install -y unzip
+
+npm install pm2@latest -g
