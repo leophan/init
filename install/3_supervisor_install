@@ -7,3 +7,5 @@ DIR=`pwd`
 yum -y install epel-release
 
 yum -y install supervisor
+
+systemctl enable supervisord
