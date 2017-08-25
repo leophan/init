@@ -2,4 +2,6 @@ mkfs.xfs /dev/vdb
 
 vi /etc/fstab
 
-/dev/vdb1 /opt/src      xfs      defaults 0 0
+#/dev/vdb1 /opt/src      xfs      defaults 0 0
+
+/dev/vdb        /mnt/data       xfs     defaults 0 0
