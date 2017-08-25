@@ -1,0 +1,7 @@
+rpm -Uvh https://download.newrelic.com/pub/newrelic/el5/i386/newrelic-repo-5-3.noarch.rpm
+
+yum install newrelic-sysmond -y
+
+nrsysmond-config --set license_key=854c413de8d7857f22ae3ff2572aa7597f0a2814
+
+/etc/init.d/newrelic-sysmond start
