@@ -1,0 +1,17 @@
+ulimit -n 65536
+ulimit -s 10240
+ulimit -c unlimited
+
+I. vi /etc/security/limits.conf
+root             -       nofile          65536
+
+II. vi /etc/security/limits.conf
+root             -       stack	         10240
+
+III. vi /etc/security/limits.conf
+root             -       core	         unlimited
+
+Example
+root             -       nofile          65536
+root             -       stack	         10240
+root             -       core	         unlimited

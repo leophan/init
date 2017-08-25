@@ -8,10 +8,10 @@ echo "alias ci='cd /opt/init'" >> ~/.bashrc
 
 source ~/.bashrc
 
-systemctl stop postfix
+sudo systemctl stop postfix
 
-systemctl disable postfix
+sudo systemctl disable postfix
 
-systemctl status postfix
+sudo systemctl status postfix
 
-systemctl list-unit-files --type=service | grep postfix
+sudo systemctl list-unit-files --type=service | grep postfix
