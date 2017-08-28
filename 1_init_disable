@@ -1,0 +1,7 @@
+systemctl stop postfix
+
+systemctl disable postfix
+
+systemctl status postfix
+
+systemctl list-unit-files --type=service | grep postfix
