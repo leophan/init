@@ -1,0 +1,27 @@
+#I. Install SPM
+
+sudo wget https://pub-repo.sematext.com/centos/sematext.repo -O /etc/yum.repos.d/sematext.repo
+
+sudo yum clean all
+
+sudo yum install spm-client
+
+#II. Config Kafka01, Kafka02, Kafka03
+
+#sudo bash /opt/spm/bin/spm-client-setup-conf.sh c6e8a5bd-21de-442b-9dfd-eadf7d55ee02 kafka javaagent kafka-broker
+#sudo bash /opt/spm/bin/spm-client-setup-conf.sh f34b8664-d897-426a-9143-fa429f446ed8 kafka javaagent kafka-broker
+#sudo bash /opt/spm/bin/spm-client-setup-conf.sh 1eb3b787-086f-40b9-b56e-850f2d54deea kafka javaagent kafka-broker
+
+#III. Config Kafka01, Kafka02, Kafka03
+vi /opt/src/kafka_2.11-0.11.0.0/bin/kafka-server-start.sh
+
+#export KAFKA_JMX_OPTS="-Dcom.sun.management.jmxremote -javaagent:/opt/spm/spm-monitor/lib/spm-monitor-kafka.jar=c6e8a5bd-21de-442b-9dfd-eadf7d55ee02:kafka-broker:default"
+#export KAFKA_JMX_OPTS="-Dcom.sun.management.jmxremote -javaagent:/opt/spm/spm-monitor/lib/spm-monitor-kafka.jar=f34b8664-d897-426a-9143-fa429f446ed8:kafka-broker:default"
+#export KAFKA_JMX_OPTS="-Dcom.sun.management.jmxremote -javaagent:/opt/spm/spm-monitor/lib/spm-monitor-kafka.jar=1eb3b787-086f-40b9-b56e-850f2d54deea:kafka-broker:default"
+
+#IV. Config SPM load Kafka Broker
+#vi /opt/spm/spm-monitor/conf/spm-monitor-kafka-broker-config-c6e8a5bd-21de-442b-9dfd-eadf7d55ee02-default.properties
+#vi /opt/spm/spm-monitor/conf/spm-monitor-kafka-broker-config-f34b8664-d897-426a-9143-fa429f446ed8-default.properties
+#vi /opt/spm/spm-monitor/conf/spm-monitor-kafka-broker-config-1eb3b787-086f-40b9-b56e-850f2d54deea-default.properties
+
+#KAFKA_BROKER_CONFIG_PATH="/opt/src/kafka_2.11-0.11.0.0/config/server.properties"
