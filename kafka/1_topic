@@ -1,0 +1,8 @@
+/opt/src/kafka_2.11-0.11.0.0/bin/kafka-topics.sh --create --zookeeper kk1:2181,kk2:2181,kk3:2181/kafka-cluster --replication-factor 3 --partitions 12 --topic fimplus-apps
+/opt/src/kafka_2.11-0.11.0.0/bin/kafka-topics.sh --create --zookeeper kk1:2181,kk2:2181,kk3:2181/kafka-cluster --replication-factor 3 --partitions 12 --topic fimplus-logs
+/opt/src/kafka_2.11-0.11.0.0/bin/kafka-topics.sh --create --zookeeper kk1:2181,kk2:2181,kk3:2181/kafka-cluster --replication-factor 2 --partitions 6 --topic errorhandling-logs
+/opt/src/kafka_2.11-0.11.0.0/bin/kafka-topics.sh --create --zookeeper kk1:2181,kk2:2181,kk3:2181/kafka-cluster --replication-factor 2 --partitions 6 --topic useractivity-logs
+/opt/src/kafka_2.11-0.11.0.0/bin/kafka-topics.sh --create --zookeeper kk1:2181,kk2:2181,kk3:2181/kafka-cluster --replication-factor 2 --partitions 6 --topic mbf-logs
+/opt/src/kafka_2.11-0.11.0.0/bin/kafka-topics.sh --create --zookeeper kk1:2181,kk2:2181,kk3:2181/kafka-cluster --replication-factor 2 --partitions 6 --topic stream-logs
+/opt/src/kafka_2.11-0.11.0.0/bin/kafka-topics.sh --create --zookeeper kk1:2181,kk2:2181,kk3:2181/kafka-cluster --replication-factor 2 --partitions 6 --topic drmtoday-logs
+/opt/src/kafka_2.11-0.11.0.0/bin/kafka-topics.sh --create --zookeeper kk1:2181,kk2:2181,kk3:2181/kafka-cluster --replication-factor 2 --partitions 6 --topic vmx-logs

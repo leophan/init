@@ -1,0 +1,29 @@
+useradd centos -d /home/centos
+
+mkdir -p /opt/src
+
+cd /opt/src
+
+DIR=`pwd`
+
+NAME=hadoop-2.7.2
+PK_NAME=$NAME
+PK_HOME=$DIR/$PK_NAME
+PK_PATH=FLUME_HOME
+PK_PROFILE=hadoop
+
+yum install -y wget
+
+#wget http://mirrors.viethosting.com/apache/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz
+wget http://mirrors.viethosting.com/apache/hadoop/common/hadoop-2.7.2/$PK_NAME.tar.gz
+
+tar -zxvf $PK_NAME.tar.gz
+
+rm -rf $PK_NAME.tar.gz
+
+echo "export $PK_PATH=$PK_HOME; PATH=\${PATH}:\$$PK_PATH/bin" > /etc/profile.d/$PK_PROFILE.sh
+
+source /etc/profile.d/$PK_PROFILE.sh
+
+#chown -R centos:centos $DIR/$PK_NAME 
+echo $PK_HOME

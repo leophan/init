@@ -1,0 +1,26 @@
+useradd centos -d /home/centos
+
+mkdir -p /opt/src
+
+cd /opt/src
+
+DIR=`pwd`
+
+LOGSTASH_NAME=logstash-5.5.2
+LOGSTASH_HOME=$DIR/$LOGSTASH_NAME
+
+yum install -y wget
+
+wget https://artifacts.elastic.co/downloads/logstash/logstash-5.5.2.tar.gz
+wget https://download.elastic.co/kibana/kibana/$LOGSTASH_NAME.tar.gz
+
+tar -zxvf $LOGSTASH_NAME.tar.gz
+
+rm -rf $LOGSTASH_NAME.tar.gz
+
+echo "export LOGSTASH_HOME=$LOGSTASH_HOME; PATH=\${PATH}:\$LOGSTASH_HOME/bin" > /etc/profile.d/logstash.sh
+
+source /etc/profile.d/logstash.sh
+
+#chown -R centos:centos $DIR/$LOGSTASH_NAME 
+echo $LOGSTASH_HOME
