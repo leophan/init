@@ -16,6 +16,10 @@ wget https://download.elastic.co/kibana/kibana/$LOGSTASH_NAME.tar.gz
 
 tar -zxvf $LOGSTASH_NAME.tar.gz
 
+mkdir -p /mnt/data/logstash-5.5.2/data
+
+mkdir -p /mnt/data/logstash-5.5.2/logs
+
 rm -rf $LOGSTASH_NAME.tar.gz
 
 echo "export LOGSTASH_HOME=$LOGSTASH_HOME; PATH=\${PATH}:\$LOGSTASH_HOME/bin" > /etc/profile.d/logstash.sh
