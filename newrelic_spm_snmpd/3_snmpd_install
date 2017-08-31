@@ -1,0 +1,5 @@
+yum install -y net-snmp net-snmp-utils
+
+echo "rocommunity FIMplus" > /etc/snmp/snmpd.conf
+
+systemctl enable snmpd && systemctl start snmpd

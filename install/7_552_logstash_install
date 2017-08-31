@@ -16,6 +16,8 @@ wget https://download.elastic.co/kibana/kibana/$LOGSTASH_NAME.tar.gz
 
 tar -zxvf $LOGSTASH_NAME.tar.gz
 
+mkdir -p /opt/src/logstash-5.5.2/conf.d
+
 mkdir -p /mnt/data/logstash-5.5.2/data
 
 mkdir -p /mnt/data/logstash-5.5.2/logs

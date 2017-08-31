@@ -9,7 +9,7 @@ DIR=`pwd`
 NAME=hadoop-2.7.2
 PK_NAME=$NAME
 PK_HOME=$DIR/$PK_NAME
-PK_PATH=FLUME_HOME
+PK_PATH=HADOOP_HOME
 PK_PROFILE=hadoop
 
 yum install -y wget
