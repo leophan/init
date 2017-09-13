@@ -1,0 +1,50 @@
+useradd centos -d /home/centos
+
+mkdir -p /opt/src
+
+cd /opt/src
+
+DIR=`pwd`
+
+NAME=apache-predictionio-0.11.0-incubating
+PK_NAME=$NAME
+PK_HOME=$DIR/$PK_NAME
+PK_PATH=PIO_HOME
+PK_PROFILE=pio
+
+yum install -y wget
+
+#wget http://mirrors.viethosting.com/apache/incubator/predictionio/0.11.0-incubating/apache-predictionio-0.11.0-incubating.tar.gz
+wget http://mirrors.viethosting.com/apache/incubator/predictionio/0.11.0-incubating/apache-predictionio-0.11.0-incubating.tar.gz
+
+mkdir $NAME
+
+tar -zxvf $PK_NAME.tar.gz -C $PK_NAME
+
+rm -rf $PK_NAME.tar.gz
+
+cd $PK_NAME
+
+./make-distribution.sh
+
+mv *.tar.gz ../ 
+
+cd ../
+
+tar -zxvf PredictionIO-0.11.0-incubating.tar.gz
+rm -rf PredictionIO-0.11.0-incubating.tar.gz
+
+NAME=PredictionIO-0.11.0-incubating
+PK_NAME=$NAME
+PK_HOME=$DIR/$PK_NAME
+PK_PATH=PIO_HOME
+PK_PROFILE=pio
+
+chown -R centos:centos PredictionIO-0.11.0-incubating
+
+echo "export $PK_PATH=$PK_HOME; PATH=\${PATH}:\$$PK_PATH/bin" > /etc/profile.d/$PK_PROFILE.sh
+
+source /etc/profile.d/$PK_PROFILE.sh
+
+#chown -R centos:centos $DIR/$PK_NAME 
+echo $PK_HOME
