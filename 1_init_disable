@@ -1,8 +1,8 @@
-echo "alias n='netstat -lntp'" > /etc/profile.d/basic_cmd.sh
-
-echo "alias cb='cd /opt/src'" > /etc/profile.d/basic_cmd.sh
-
-echo "alias ci='cd /opt/init'" > /etc/profile.d/basic_cmd.sh
+cat <<'EOF' > /etc/profile.d/basic_cmd.sh
+alias n='netstat -lntp'
+alias cb='cd /opt/src'
+alias ci='cd /opt/init'
+EOF
 
 systemctl stop postfix
 
