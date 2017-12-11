@@ -1,16 +1,9 @@
-<<<<<<< HEAD
-=======
-echo "# UDA" >> ~/.bashrc
+echo "alias n='netstat -lntp'" >> /etc/profile.d/basic_cmd.sh
 
-echo "alias n='netstat -lntp'" >> ~/.bashrc
+echo "alias cb='cd /opt/src'" >> /etc/profile.d/basic_cmd.sh
 
-echo "alias cb='cd /opt/src'" >> ~/.bashrc
+echo "alias ci='cd /opt/init'" >> /etc/profile.d/basic_cmd.sh
 
-echo "alias ci='cd /opt/init'" >> ~/.bashrc
-
-source ~/.bashrc
-
->>>>>>> dc9ac2fc4c451d186842b3bf1904f4b4ccb45240
 systemctl stop postfix
 
 systemctl disable postfix
