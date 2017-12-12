@@ -1,0 +1,12 @@
+mkdir -p /opt/src
+
+cd /opt/src
+
+DIR=`pwd`
+
+rpm -ivh http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+#yum -y install epel-release
+
+yum -y install supervisor
+
+systemctl enable supervisord
