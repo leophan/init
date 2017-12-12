@@ -1,0 +1,33 @@
+yum install -y wget
+
+yum install -y unzip
+
+yum install -y gcc
+
+yum install -y tcl
+
+mkdir /opt/src
+
+cd /opt/src
+
+PACKAGE_NAME=redis-4.0.2
+ZIP_PACKAGE_NAME=redis-4.0.2.tar.gz
+LINK=http://download.redis.io/releases
+
+wget http://download.redis.io/releases/$ZIP_PACKAGE_NAME
+
+tar -xzvf $ZIP_PACKAGE_NAME
+
+rm -rf $ZIP_PACKAGE_NAME
+
+cd $PACKAGE_NAME/deps
+
+make hiredis lua jemalloc linenoise
+
+make
+
+echo "export REDIS_PATH=/opt/src/$PACKAGE_NAME; PATH=i\${PATH}:\$REDIS_PATH/bin" > /etc/profile.d/redis.sh
+
+source /etc/profile.d/redis.sh
+
+echo $REDIS_PATH
