@@ -1,0 +1,27 @@
+mkdir -p /opt/src
+
+cd /opt/src
+
+DIR=`pwd`
+KIBANA_NAME=kibana-5.4.3-linux-x86_64
+KIBANA_HOME=$DIR/$KIBANA_NAME
+LINK=https://artifacts.elastic.co/downloads/kibana
+
+yum install -y wget
+
+#wget https://artifacts.elastic.co/downloads/kibana/kibana-5.4.3-linux-x86_64.tar.gz
+wget $LINK/$KIBANA_NAME.tar.gz
+
+tar -zxvf $KIBANA_NAME.tar.gz
+
+rm -rf $KIBANA_NAME.tar.gz
+
+touch /etc/profile.d/kibana.sh
+
+echo "export KIBANA_HOME=$DIR/$KIBANA_NAME; PATH=\${PATH}:\$KIBANA_HOME/bin" > /etc/profile.d/kibana.sh
+
+source /etc/profile.d/kibana.sh
+
+chown -R ec2-user:ec2-user $DIR/$KIBANA_NAME
+
+echo $KIBANA_HOME
