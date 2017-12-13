@@ -20,11 +20,10 @@ tar -xzvf $ZIP_PACKAGE_NAME
 
 rm -rf $ZIP_PACKAGE_NAME
 
-cd $PACKAGE_NAME/deps
+#cd $PACKAGE_NAME/deps
+cd $PACKAGE_NAME
 
-make hiredis lua jemalloc linenoise
-
-cd ..
+#make hiredis lua jemalloc linenoise
 
 make
 
