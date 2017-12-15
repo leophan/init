@@ -1,0 +1,3 @@
+echo "export JAR_SUB_HOME=/opt/src/jar_bds;" > /etc/profile.d/jar_submit.sh
+
+echo $JAR_SUB_HOME 
