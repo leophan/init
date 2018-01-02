@@ -1,0 +1,30 @@
+mkdir -p /opt/src
+
+cd /opt/src
+
+DIR=`pwd`
+LOGSTASH_NAME=logstash-6.1.1
+LOGSTASH_HOME=$DIR/$LOGSTASH_NAME
+LINK=https://artifacts.elastic.co/downloads/logstash
+
+apt-get install -y wget
+
+#https://artifacts.elastic.co/downloads/logstash/logstash-6.0.1.tar.gz
+wget $LINK/$LOGSTASH_NAME.tar.gz
+
+tar -zxvf $LOGSTASH_NAME.tar.gz
+
+rm -rf $LOGSTASH_NAME.tar.gz
+
+touch /etc/profile.d/logstash.sh
+
+echo "export LOGSTASH_HOME=$DIR/$LOGSTASH_NAME; PATH=\${PATH}:\$LOGSTASH_HOME/bin" > /etc/profile.d/logstash.sh
+
+source /etc/profile.d/logstash.sh
+
+#chown -R ec2-user:ec2-user $DIR/$LOGSTASH_NAME
+
+echo $LOGSTASH_HOME
+
+mkdir $LOGSTASH_HOME/conf.d
+mkdir $LOGSTASH_HOME/sincedb_path
