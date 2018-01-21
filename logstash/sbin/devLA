@@ -1,0 +1,1 @@
+nohup ../bin/logstash -f ../conf.d/cdn_wtt_dev.conf --path.data ../path_data/dev >> dev_log.out &

@@ -1,0 +1,1 @@
+nohup ../bin/logstash -f ../conf.d/cdn_wtt_prod.conf --path.data ../path_data/prod >> prod_log.out &
