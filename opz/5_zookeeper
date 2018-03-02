@@ -1,0 +1,2 @@
+export ZK_HOME=/opt/src/zookeeper-3.4.10
+echo "export JVMFLAGS="-Xmx2048m"" > $ZK_HOME/conf/java.env
