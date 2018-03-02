@@ -12,6 +12,21 @@ centos  	-	 nofile		65536
 
 ulimit -n 65536
 
+II.2
+*                soft    nofile         65536
+*                hard    nofile         65536
+*                soft    memlock        unlimited
+*                hard    memlock        unlimited
+ec2-user         soft    nofile         65536
+ec2-user         hard    nofile         65536
+ec2-user         soft    memlock        unlimited
+ec2-user         hard    memlock        unlimited
+root             soft    nofile         65536
+root             hard    nofile         65536
+root             soft    memlock        unlimited
+
 III:
 max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
 sysctl -w vm.max_map_count=262144
+
+echo "vm.max_map_count=262144" | sudo tee -a /etc/sysctl.conf
