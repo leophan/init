@@ -1,0 +1,26 @@
+mkdir -p /opt/src
+
+cd /opt/src
+
+DIR=`pwd`
+
+PACKAGE=apache-storm-1.1.1
+ZIP_PACKAGE=$PACKAGE.tar.gz
+#LINK=http://mirror.downloadvn.com/apache/storm
+LINK=https://archive.apache.org/dist/storm
+
+yum install -y wget
+
+wget $LINK/$PACKAGE/$ZIP_PACKAGE
+
+tar -zxvf $ZIP_PACKAGE
+
+rm -rf $ZIP_PACKAGE
+
+touch /etc/profile.d/storm.sh
+
+echo "export STORM_HOME=$DIR/$PACKAGE; PATH=\${PATH}:\$STORM_HOME/bin; PATH=\${PATH}:\$STORM_HOME/sbin" > /etc/profile.d/storm.sh
+
+source /etc/profile.d/storm.sh
+
+echo $STORM_HOME
