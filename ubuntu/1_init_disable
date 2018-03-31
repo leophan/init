@@ -1,0 +1,13 @@
+cat <<'EOF' > /etc/profile.d/basic_cmd.sh
+alias n='netstat -lntp'
+alias cb='cd /opt/src'
+alias ct='cd /opt/src/tmp'
+alias ci='cd /opt/init'
+EOF
+
+cat <<'EOF' > ~/.bash_aliases
+alias n='netstat -lntp'
+alias cb='cd /opt/src'
+alias ct='cd /opt/src/tmp'
+alias ci='cd /opt/init'
+EOF
