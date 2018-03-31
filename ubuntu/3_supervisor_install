@@ -1,0 +1,10 @@
+mkdir -p /opt/src
+
+cd /opt/src
+
+DIR=`pwd`
+
+
+apt-get -y install supervisor
+
+systemctl enable supervisor
