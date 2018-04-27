@@ -1,0 +1,35 @@
+yum install -y wget
+
+yum install -y unzip
+
+mkdir /usr/java
+
+cd /usr/java
+
+wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz"
+
+wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip"
+
+tar xzf jdk-8u171-linux-x64.tar.gz
+
+rm -rf jdk-8u171-linux-x64.tar.gz
+
+unzip jce_policy-8.zip
+
+rm -rf jce_policy-8.zip
+
+alternatives --install /usr/bin/java java /usr/java/jdk1.8.0_171/bin/java 2
+
+alternatives --install /usr/bin/jar jar /usr/java/jdk1.8.0_171/bin/jar 2
+
+alternatives --install /usr/bin/javac javac /usr/java/jdk1.8.0_171/bin/javac 2
+
+java -version
+
+touch /etc/profile.d/java.sh
+
+echo "export JAVA_HOME=/usr/java/jdk1.8.0_171; PATH=\${PATH}:/usr/java/jdk1.8.0_171/bin" > /etc/profile.d/java.sh
+
+source /etc/profile.d/java.sh
+
+echo $JAVA_HOME
