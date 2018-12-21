@@ -1,0 +1,20 @@
+cd /opt/src/aml
+
+wget https://archive.apache.org/dist/spark/spark-2.1.2/spark-2.1.2-bin-hadoop2.7.tgz
+tar -zxvf spark-2.1.2-bin-hadoop2.7.tgz
+rm -rf spark-2.1.2-bin-hadoop2.7.tgz
+
+# Install Hadoop2
+wget http://archive.apache.org/dist/hadoop/common/hadoop-2.8.2/hadoop-2.8.2.tar.gz
+tar -zxvf hadoop-2.8.2.tar.gz
+rm -rf hadoop-2.8.2.tar.gz
+
+# Install elasticsearch-5
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.4.tar.gz
+tar -zxvf elasticsearch-5.6.4.tar.gz
+rm -rf elasticsearch-5.6.4.tar.gz
+
+# Install hbase-1
+wget https://archive.apache.org/dist/hbase/1.3.2/hbase-1.3.2-bin.tar.gz
+tar -zxvf hbase-1.3.2-bin.tar.gz
+rm -rf hbase-1.3.2-bin.tar.gz
